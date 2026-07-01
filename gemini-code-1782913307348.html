@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prudhivi Siva Sai Devesh | Portfolio</title>
+    <style>
+        /* Base Layout & Soft Engineering Dot-Grid Background */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #f3edd7; 
+            /* Decreased dot opacity for a subtler look */
+            background-image: radial-gradient(#111111 1px, transparent 1px);
+            background-size: 26px 26px;
+            opacity: 0.99; /* Fix for background rendering layers */
+            color: #111111;
+            font-family: 'Impact', 'Arial Black', -apple-system, sans-serif;
+            letter-spacing: 0.5px;
+            padding: 40px 15px;
+            min-height: 100vh;
+        }
+        
+        /* Subtle tweak to the dot pattern transparency via container backdrop if needed, 
+           but adjusting color directly to a transparent black works best */
+        body {
+            background-image: radial-gradient(rgba(17, 17, 17, 0.07) 1.5px, transparent 1.5px);
+        }
+        
+        /* Main Portfolio Hard-Shell Book Container */
+        .portfolio-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fdfdfb;
+            border: 5px solid #111111; 
+            box-shadow: 16px 16px 0px #111111; /* Extreme retro/brutalist hard shadow */
+            padding: 50px 40px;
+            position: relative;
+        }
+
+        /* Technical Typography Spec */
+        .mono-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 900;
+        }
+
+        .section-watermark {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: #111111;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border-bottom: 3px dashed #111111;
+            padding-bottom: 6px;
+        }
+
+        /* Bold Header Display Block */
+        header {
+            margin-bottom: 50px;
+            border-bottom: 10px solid #111111; 
+            padding-bottom: 30px;
+        }
+        header h1 {
+            font-size: 4.8rem; 
+            line-height: 0.9;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #111111;
+            word-wrap: break-word;
+        }
+        header .subtitle {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #111111;
+            margin-top: 15px;
+            display: inline-block;
+            background: #f3edd7;
+            padding: 4px 10px;
+            border: 2px solid #111111;
+        }
+
+        /* Contact & Social Anchor Bar */
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .contact-link {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            font-weight: 900;
+            color: #111111;
+            text-decoration: none;
+            background: #ffffff;
+            padding: 8px 16px;
+            border: 3px solid #111111;
+            box-shadow: 4px 4px 0px #111111;
+            transition: all 0.1s ease;
+        }
+        .contact-link:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #111111;
+            background: #111111;
+            color: #ffffff;
+        }
+
+        /* Introduction Content Layout */
+        .intro-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        @media (max-width: 768px) {
+            .intro-section { grid-template-columns: 1fr; gap: 30px;}
+            header h1 { font-size: 3rem; }
+        }
+        .intro-text h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: #111111;
+            color: #ffffff;
+            display: inline-block;
+            padding: 4px 12px;
+        }
+        .intro-text p {
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #222222;
+        }
+        .focus-list {
+            list-style: none;
+        }
+        .focus-list li {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            padding: 10px 0;
+            border-bottom: 3px solid #111111;
+            font-weight: 900;
+        }
+
+        /* System Split Headings */
+        .projects-header {
+            font-size: 3rem;
+            text-transform: uppercase;
+            border-bottom: 8px double #111111;
+            margin-bottom: 45px;
+            padding-bottom: 10px;
+            color: #111111;
+        }
+        
+        /* Master Project Card Archetype */
+        .project-card {
+            background: #ffffff;
+            border: 4px solid #111111;
+            box-shadow: 8px 8px 0px #111111;
+            margin-bottom: 50px;
+            padding: 35px;
+            position: relative;
+        }
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #111111;
+            border-bottom: 2px solid #111111;
+            padding-bottom: 8px;
+        }
+        .project-title {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: #111111;
+            margin-bottom: 15px;
+            line-height: 1.05;
+        }
+        .project-desc {
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #2b2b2b;
+            line-height: 1.5;
+        }
+
+        /* Dynamic Status Ribbon/Badges */
+        .status-badge {
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 900;
+            font-size: 0.95rem;
+            padding: 4px 10px;
+            border: 2px solid #111111;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        /* COLOR CODING SYSTEM RULES */
+        /* 1. DONE PROJECTS (BLUE) */
+        .project-card.status-done {
+            border-left: 16px solid #0055ff;
+        }
+        .project-card.status-done .status-badge {
+            background-color: #0055ff;
+        }
+        .project-card.status-done .btn {
+            background: #0055ff;
+            box-shadow: 4px 4px 0px #111111;
+        }
+
+        /* 2. IN THE MAKING PROJECTS (PINK) */
+        .project-card.status-making {
+            border-left: 16px solid #ff2a85;
+        }
+        .project-card.status-making .status-badge {
+            background-color: #ff2a85;
+        }
+        .project-card.status-making .btn {
+            background: #ff2a85;
+            box-shadow: 4px 4px 0px #111111;
+        }
+        
+        /* Poppy Structural Navigation Links */
+        .project-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: 3px solid #111111;
+            transition: all 0.1s ease;
+        }
+        .btn:hover { 
+            background: #111111; 
+            color: #ffffff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #111111;
+        }
+        
+        /* Specification Inlay Schematics */
+        .specs-box {
+            background: #f7f6f0;
+            border: 3px dashed #111111;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .specs-box h4 { 
+            font-size: 1.3rem; 
+            margin-bottom: 10px; 
+            text-transform: uppercase;
+        }
+        .specs-box ul {
+            list-style-type: square;
+            padding-left: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 900;
+            font-size: 1.05rem;
+        }
+
+        /* Footer System Block */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 6px solid #111111;
+        }
+        footer p {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+
+<div class="portfolio-container">
+    <!-- Header Block -->
+    <header>
+        <h1>Prudhivi Siva Sai Devesh</h1>
+        <div class="subtitle">Design Met Engineering // Project Ledger</div>
+        
+        <div class="contact-bar">
+            <a href="mailto:pssdevesh@gmail.com" class="contact-link">✉ pssdevesh@gmail.com</a>
+            <a href="https://github.com/Devprud" class="contact-link" target="_blank">⌨ GitHub: @Devprud</a>
+            <a href="https://instagram.com/prudhivi.devesh" class="contact-link" target="_blank">📸 IG: @prudhivi.devesh</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <div class="section-watermark">METRICS // SYSTEM OPERATOR PROFILE</div>
+    <div class="intro-section">
+        <div class="intro-text">
+            <h2>Maker Persona</h2>
+            <p>I am a student maker who learns by building things that create meaningful experiences. I believe that things built for people to experience should be just as fun and exciting as it was for the designer. From systems and interfaces to small experiments, I enjoy learning about how they work and try to redesign them in an easier way. I started designing through webpage layouts and carried that forward into other niches like physical hardware, mockups, and packaging design.</p>
+        </div>
+        <div>
+            <div style="font-size: 1.2rem; text-transform: uppercase; margin-bottom: 10px;">Core Vectors:</div>
+            <ul class="focus-list">
+                <li style="border-left: 6px solid #0055ff; padding-left: 10px;">Design Tools</li>
+                <li style="border-left: 6px solid #ff2a85; padding-left: 10px;">Digital UX</li>
+                <li style="border-left: 6px solid #0055ff; padding-left: 10px;">Human Perception</li>
+                <li style="border-left: 6px solid #ff2a85; padding-left: 10px;">Physical Products</li>
+                <li style="border-left: 6px solid #0055ff; padding-left: 10px;">Real-World Constraints</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Web & Software Production Module -->
+    <div class="projects-header">Web & Software Production</div>
+
+    <!-- Project 1: School Website -->
+    <div class="project-card status-done">
+        <span class="status-badge">✓ Done</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>School Website Clone</strong></span>
+            <span class="mono-text">APR 2022</span>
+        </div>
+        <h3 class="project-title">Delhi Public School Website</h3>
+        <p class="project-desc">My first ever project started to explore HTML and CSS structural syntax. Built from a student's functional perspective, it shifts elements into beautiful, accessible segments. Includes a customized <strong>"Ideas Box"</strong> feature acting as a physical-to-digital sandbox post box allowing student crowdsourcing for school adjustments, new clubs, or rules.</p>
+        <div class="project-links">
+            <a href="https://devprud.github.io/school_website_clone/" class="btn" target="_blank">Live Site ↗</a>
+            <a href="https://github.com/Devprud/school_website_clone?tab=readme-ov-file" class="btn" target="_blank">GitHub Repo ↗</a>
+        </div>
+    </div>
+
+    <!-- Project 2: Dorms Kitchen -->
+    <div class="project-card status-done">
+        <span class="status-badge">✓ Done</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>Dorm's Kitchen Web Space</strong></span>
+            <span class="mono-text">NOV 2023</span>
+        </div>
+        <h3 class="project-title">Dorm's Kitchen</h3>
+        <p class="project-desc">An exercise in UI color management and fluid micro-interactions. This project uses deep, passionate reds alongside striking contrasting layouts to test structural harmony. Focused intentionally on building visual consistency using bright, active food-industry color blocks.</p>
+        <div class="project-links">
+            <a href="https://devprud.github.io/Dorm-s-Kitchen/" class="btn" target="_blank">Live Site ↗</a>
+            <a href="https://github.com/Devprud/Darm-s-Kitchen" class="btn" target="_blank">GitHub Repo ↗</a>
+        </div>
+    </div>
+
+    <!-- Project 3: Railway Reservation -->
+    <div class="project-card status-done">
+        <span class="status-badge">✓ Done</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>Database Core Sync</strong></span>
+            <span class="mono-text">MAR 2025</span>
+        </div>
+        <h3 class="project-title">Railway Reservation System</h3>
+        <p class="project-desc">A migration of a robust backend core (Python and SQLite) into a natural, subtle Graphical User Interface. Created with a clean blue-on-beige color palette to make modern data structures feel approachable. Uses Flask to act as a middleman link handling credentials and transaction arrays securely between front-end UI and JavaScript relays.</p>
+        <div class="project-links">
+            <a href="https://github.com/Devprud/railway-reservation-system" class="btn" target="_blank">View Codebase ↗</a>
+        </div>
+    </div>
+
+
+    <!-- Industrial Design & Conceptual Hardware Assembly -->
+    <div class="projects-header">Industrial & Hardware Systems</div>
+
+    <!-- Project 4: MP-01 -->
+    <div class="project-card status-making">
+        <span class="status-badge">⚠ In The Making</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>MP-01 Hardware Design</strong></span>
+            <span class="mono-text">OCT 2025</span>
+        </div>
+        <h3 class="project-title">MP-01 Music Player</h3>
+        <p class="project-desc">A conceptual design born from a mix of a nostalgic Sony Walkman and Teenage Engineering’s high-precision design languages (TP-7 / TX-6). While the initial variant (V-1) explored absolute modern industrial minimalism inspired by Dieter Rams, the final evolution (V-2) infuses old textures back in, showcasing square vintage inputs and a glossy wooden outer shell profile.</p>
+    </div>
+
+    <!-- Project 5: CAM-01 -->
+    <div class="project-card status-making">
+        <span class="status-badge">⚠ In The Making</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>CAM-01 Optical Schematic</strong></span>
+            <span class="mono-text">OCT 2025</span>
+        </div>
+        <h3 class="project-title">CAM-01 Minimalist Camera</h3>
+        <p class="project-desc">A hardware response to over-tuned modern mobile device photography. Designed completely around the bare essentials required to capture raw, grainy, nostalgic imagery without algorithmic upscaling filters. Encased in beautiful split acrylic and timber shielding.</p>
+        <div class="specs-box">
+            <h4>Bill of Materials Blueprint:</h4>
+            <ul>
+                <li>Microcontroller unit relay core</li>
+                <li>Camera Sensor array</li>
+                <li>Internal Power Battery cell</li>
+                <li>Pure Optical View Finder mechanism</li>
+                <li>Tactile Shutter Input button</li>
+                <li>SD Card Module & reader output</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Project 6: 2025 Album -->
+    <div class="project-card status-making">
+        <span class="status-badge">⚠ In The Making</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>Tactile Packaging Logic</strong></span>
+            <span class="mono-text">DEC 2025</span>
+        </div>
+        <h3 class="project-title">The Hand-Packaged 2025 Album</h3>
+        <p class="project-desc">A custom project framing physical printed memories captured throughout 2025. Industrial form factors were heavily influenced by Craighill's Summit Card Case and standard structural paper sizing layouts. The box implements an deliberate premium <strong>Pull-Tab tab reveal mechanical philosophy</strong> to construct immediate user ownership through tactile touch interactions.</p>
+    </div>
+
+    <!-- Project 7: The Bag Project -->
+    <div class="project-card status-making">
+        <span class="status-badge">⚠ In The Making</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>Modular Utility Wear</strong></span>
+            <span class="mono-text">NOV 2025</span>
+        </div>
+        <h3 class="project-title">The Modular Pegboard Bag</h3>
+        <p class="project-desc">A lifestyle concept mixing the flexible personalization arrays of the Ikea Skadis series with heavy-duty outdoor gear specs. Solves the issue of non-standard daily carries by letting users securely mount specialized dynamic pouches to reinforced front lace-holes via a high-tension twisting <strong>BOAFIT lace system</strong> setup.</p>
+    </div>
+
+    <!-- Project 8: Polaris Computer -->
+    <div class="project-card status-making">
+        <span class="status-badge">⚠ In The Making</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>Chassis Architecture</strong></span>
+            <span class="mono-text">FEB 2026</span>
+        </div>
+        <h3 class="project-title">Polaris: Personal Computer Concept</h3>
+        <p class="project-desc">An ambitious old-money aesthetic laptop chassis that blends vintage radio hardware assemblies with premium Rolls Royce interior cues. Built using a 16:9 clamshell orientation, the system implements side magnetic paths and specific surface target touchpoints to natively link audio elements, custom external modules, and microphone arrays seamlessly.</p>
+    </div>
+
+    <!-- Project 9: Rig System -->
+    <div class="project-card status-making">
+        <span class="status-badge">⚠ In The Making</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>Kinematic Cinema Rigs</strong></span>
+            <span class="mono-text">MAR 2026</span>
+        </div>
+        <h3 class="project-title">RIG Series: Mobile Filmmaking Tools</h3>
+        <p class="project-desc">An integration ecosystem aiming to unlock cinema production parameters out of standard consumer smartphones. Designed to explore physical layout limits and external manufacturing design alignment parameters.</p>
+        <div class="specs-box">
+            <h4>System Architecture Elements:</h4>
+            <p style="font-family: sans-serif; font-weight:700; font-size:1rem; margin-bottom:8px;"><strong>Part-1: The Phone Cage:</strong> An elastic, ultra-strong lightweight phone cage designed to maximize security while nullifying size variance constraints.</p>
+            <p style="font-family: sans-serif; font-weight:700; font-size:1rem; margin-bottom:8px;"><strong>Part-2: The Handheld H-RIG:</strong> A lightweight structural PVC frame built to ensure clean dual-handed stabilization adjustments across track sequences.</p>
+            <p style="font-family: sans-serif; font-weight:700; font-size:1rem;"><strong>Part-3: The Smart Tabletop T-RIG:</strong> A highly sophisticated stepper-motor rig tracking system utilizing microcontrollers, an integrated ESP32 Wi-Fi relay, and joystick adjustments—optionally guided autonomously via Google's Machine Learning Kit framework.</p>
+        </div>
+    </div>
+
+
+    <!-- Academic Hobbies & Discrete Mathematics -->
+    <div class="projects-header">Hobby Work & Calculations</div>
+
+    <!-- Project 10: Logic Modules -->
+    <div class="project-card status-done">
+        <span class="status-badge">✓ Done</span>
+        <div class="project-meta">
+            <span class="mono-text"><strong>Logic Routing & NLP Assemblies</strong></span>
+            <span class="mono-text">2023 - 2025</span>
+        </div>
+        <h3 class="project-title">Binary Computing & Vector NLP Searches</h3>
+        <p class="project-desc"><strong>4-Bit Binary Adder:</strong> A classic hardware circuit configuration applying a 7483 IC to calculate mathematical sums directly via toggled input switch routes, reporting output parameters instantaneously via a physical LED array.</p>
+        <p class="project-desc" style="margin-top: 12px;"><strong>"Find You" Search Framework:</strong> A localized vector-based search engine solution leveraging Natural Language Processing capabilities to let individuals or servers parse files contextually, removing structural file-naming barriers.</p>
+    </div>
+
+    <!-- Footer Summary Block -->
+    <footer>
+        <p>Prudhivi Siva Sai Devesh © 2026 | Built to design, build, and engineer.</p>
+    </footer>
+</div>
+
+</body>
+</html>
